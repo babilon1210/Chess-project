@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Eitan Shahar AKA Babilon1210">
+    <link rel="stylesheet" href="Chess.css">
+
+
+    <title>Chess</title>
+</head>
+
+
+<body>
+    <div id="loading" class="spinner-container hidden">
+        <div class="spinner"></div>
+        <p class="waiting">Looking for opponents</p>
+    </div>
+
+    <div id="buttonsContainer" class="gameOptions">
+        <button id="playMultiplayerButton" onclick="startMultiplayer()" disabled>Multiplayer <br> (Only available
+            when other players are connected)</button>
+        <button id="playComputerButton" onclick="chooseAlliance()">Single player</button>
+        <div id="chooseAlliance" hidden>
+            <p id="playAs">Play as:</p>
+            <button id="allianceWhite" onClick="startSinglePlayer(this)">White</button>
+            <button id="allianceBlack" onClick="startSinglePlayer(this)">Black</button>
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <div class=" board">
+            <ul>
+                <div class="divv" id="r9">
+                    <li class="eatTile" id="64"></li>
+                    <li class="eatTile" id="65"></li>
+                    <li class="eatTile" id="66"></li>
+                    <li class="eatTile" id="67"></li>
+                    <li class="eatTile" id="68"></li>
+                    <li class="eatTile" id="69"></li>
+                    <li class="eatTile" id="70"></li>
+                    <li class="eatTile" id="71"></li>
+                    <li class="eatTile" id="72"></li>
+                    <li class="eatTile" id="73"></li>
+                    <li class="eatTile" id="74"></li>
+                    <li class="eatTile" id="75"></li>
+                    <li class="eatTile" id="76"></li>
+                    <li class="eatTile" id="77"></li>
+                    <li class="eatTile" id="78"></li>
+                    <li class="eatTile" id="79"></li>
+                </div>
+                <div class="divv" id="r8">
+                    <li class="tile" id="0">Brook</li>
+                    <li class="tile" id="1">Bknight</li>
+                    <li class="tile" id="2">Bbishop</li>
+                    <li class="tile" id="3">Bqueen</li>
+                    <li class="tile" id="4">Bking</li>
+                    <li class="tile" id="5">Bbishop</li>
+                    <li class="tile" id="6">Bknight</li>
+                    <li class="tile" id="7">Brook</li>
+                </div>
+                <div class="divv" id="r7">
+                    <li class="tile" id="8">Bpawn</li>
+                    <li class="tile" id="9">Bpawn</li>
+                    <li class="tile" id="10">Bpawn</li>
+                    <li class="tile" id="11">Bpawn</li>
+                    <li class="tile" id="12">Bpawn</li>
+                    <li class="tile" id="13">Bpawn</li>
+                    <li class="tile" id="14">Bpawn</li>
+                    <li class="tile" id="15">Bpawn</li>
+                </div>
+                <div class="divv" id="r6">
+                    <li class="tile" id="16"></li>
+                    <li class="tile" id="17"></li>
+                    <li class="tile" id="18"></li>
+                    <li class="tile" id="19"></li>
+                    <li class="tile" id="20"></li>
+                    <li class="tile" id="21"></li>
+                    <li class="tile" id="22"></li>
+                    <li class="tile" id="23"></li>
+                </div>
+                <div class="divv" id="r5">
+                    <li class="tile" id="24"></li>
+                    <li class="tile" id="25"></li>
+                    <li class="tile" id="26"></li>
+                    <li class="tile" id="27"></li>
+                    <li class="tile" id="28"></li>
+                    <li class="tile" id="29"></li>
+                    <li class="tile" id="30"></li>
+                    <li class="tile" id="31"></li>
+                </div>
+                <div class="divv" id="r4">
+                    <li class="tile" id="32"></li>
+                    <li class="tile" id="33"></li>
+                    <li class="tile" id="34"></li>
+                    <li class="tile" id="35"></li>
+                    <li class="tile" id="36"></li>
+                    <li class="tile" id="37"></li>
+                    <li class="tile" id="38"></li>
+                    <li class="tile" id="39"></li>
+                </div>
+                <div class="divv" id="r3">
+                    <li class="tile" id="40"></li>
+                    <li class="tile" id="41"></li>
+                    <li class="tile" id="42"></li>
+                    <li class="tile" id="43"></li>
+                    <li class="tile" id="44"></li>
+                    <li class="tile" id="45"></li>
+                    <li class="tile" id="46"></li>
+                    <li class="tile" id="47"></li>
+                </div>
+                <div class="divv" id="r2">
+                    <li class="tile" id="48">Wpawn</li>
+                    <li class="tile" id="49">Wpawn</li>
+                    <li class="tile" id="50">Wpawn</li>
+                    <li class="tile" id="51">Wpawn</li>
+                    <li class="tile" id="52">Wpawn</li>
+                    <li class="tile" id="53">Wpawn</li>
+                    <li class="tile" id="54">Wpawn</li>
+                    <li class="tile" id="55">Wpawn</li>
+                </div>
+                <div class="divv" id="r1">
+                    <li class="tile" id="56">Wrook</li>
+                    <li class="tile" id="57">Wknight</li>
+                    <li class="tile" id="58">Wbishop</li>
+                    <li class="tile" id="59">Wqueen</li>
+                    <li class="tile" id="60">Wking</li>
+                    <li class="tile" id="61">Wbishop</li>
+                    <li class="tile" id="62">Wknight</li>
+                    <li class="tile" id="63">Wrook</li>
+                </div>
+                <div class="divv" id="r10">
+                    <li class="eatTile" id="80"></li>
+                    <li class="eatTile" id="81"></li>
+                    <li class="eatTile" id="82"></li>
+                    <li class="eatTile" id="83"></li>
+                    <li class="eatTile" id="84"></li>
+                    <li class="eatTile" id="85"></li>
+                    <li class="eatTile" id="86"></li>
+                    <li class="eatTile" id="87"></li>
+                    <li class="eatTile" id="88"></li>
+                    <li class="eatTile" id="89"></li>
+                    <li class="eatTile" id="90"></li>
+                    <li class="eatTile" id="91"></li>
+                    <li class="eatTile" id="92"></li>
+                    <li class="eatTile" id="93"></li>
+                    <li class="eatTile" id="94"></li>
+                    <li class="eatTile" id="95"></li>
+                </div>
+            </ul>
+        </div>
+        <div class="game-history">
+            <table id="game-history-table">
+                <thead>
+                    <tr>
+                        <th>White</th>
+                        <th>Black</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <!-- <div id="chat-window">
+            <h2 id="chat-headline">Chat with you opponent</h2>
+            <textarea id="chat-history" readonly></textarea>
+            <input type="text" id="chat-message" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+        </div> -->
+    </div>
+
+    <script src="Chess.js"></script>
+</body>
+
+</html>
