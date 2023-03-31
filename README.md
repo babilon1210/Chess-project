@@ -1,2 +1,5 @@
 # Chess-project
-A chess game written from scratch in JAVA, Spring Framework, HTML, JS, CSS.
+A chess game written from scratch.
+Backend engine written in JAVA. 
+Web socket for client-server communication written using Spring Framework.
+Frontend written in HTML, JS, CSS.
